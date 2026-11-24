@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#e6f032">
+<title>Gobble, gobble, hip hooray! — the film — The Dog &amp; Pony Show</title>
+<meta name="description" content="The film, with the words lighting up as they are sung. Press play.">
+<style>
+/* ==========================================================================
+   THE DOG & PONY SHOW — the bit of the house stylesheet this page uses.
+   Lifted from the site's styles.css / pages.css / motion.css, reduced to the
+   rules that actually match something on this page, so the page is one file
+   that stands on its own. Everything it loads from disk sits in this folder.
+   ========================================================================== */
+
+/* ---------- type ---------------------------------------------------------
+   Big Shoulders and Onest, both SIL Open Font License 1.1 — free to ship.
+   Uppercase is always Big Shoulders. Onest is never set in caps. */
+@font-face{
+  font-family:'Big Shoulders'; src:url('fonts/bigshoulders-latin.woff2') format('woff2');
+  font-weight:100 900; font-stretch:100%; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Big Shoulders'; src:url('fonts/bigshoulders-latin-ext.woff2') format('woff2');
+  font-weight:100 900; font-stretch:100%; font-style:normal; font-display:swap;
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+@font-face{
+  font-family:'Onest'; src:url('fonts/onest-latin.woff2') format('woff2');
+  font-weight:100 900; font-style:normal; font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+@font-face{
+  font-family:'Onest'; src:url('fonts/onest-latin-ext.woff2') format('woff2');
+  font-weight:100 900; font-style:normal; font-display:swap;
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;
+}
+
+/* ---------- tokens -------------------------------------------------------- */
+:root{
+  --paper:#faf5eb; --paper-2:#f5f0e6; --cream:#ebe6dc; --cream-line:#e1dcd2;
+  --red:#e6001e; --red-dark:#be001e; --maroon:#500a14; --acid:#e6f032;
+  --white:#fff; --black:#000;
+  --wrapw:1600px; --gut:24px; --inset:80px;
+  --display:'Big Shoulders',Impact,'Haettenschweiler',sans-serif;
+  --body:'Onest','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --edge:var(--red-dark);
+  --shadow:#e6e1d8; --shadow-cream:#d8d4ca; --shadow-white:#eaeaea;
+  --dot:#e4ddcd;
+  --dots:radial-gradient(circle at 50% 50%, var(--dot) 1.15px, transparent 1.2px) 0 0/26px 26px;
+}
+
+/* ---------- base ---------------------------------------------------------- */
+*,::before,::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
+body{
+  margin:0;overflow-x:clip;
+  background:var(--paper);color:var(--red-dark);
+  font:400 20px/28px var(--body);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,p,ul,figure,blockquote{margin:0;padding:0}
+ul{list-style:none}
+.wrap{width:min(var(--wrapw), 100% - var(--gut)*2);margin-inline:auto}
+h1{text-wrap:balance}
+p,li{text-wrap:pretty}
+.skip{position:absolute;left:-9999px;top:0;background:var(--acid);color:var(--red-dark);padding:10px 16px;z-index:99}
+.skip:focus{left:12px;top:12px}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* ---------- bands --------------------------------------------------------- */
+.band{position:relative;padding:90px 0}
+.band > .wrap{padding-inline:var(--inset)}
+.band--paper{background:var(--dots), var(--paper)}
+.head{background:var(--dots), var(--paper);padding-bottom:80px;overflow:hidden}
+
+/* ---------- header -------------------------------------------------------- */
+.nav{position:relative;z-index:3;display:flex;align-items:center;gap:40px;height:146px;padding-left:var(--inset)}
+.nav__logo{position:relative;z-index:60}
+.nav__logo img{width:200px;height:20px;position:relative;top:-2.75px}
+
+/* ---------- footer -------------------------------------------------------- */
+.foot{height:560px;background:var(--white);color:var(--black);font:400 20px/30px var(--body);--shadow:var(--shadow-white)}
+.foot--slim{height:auto;background:var(--paper);--shadow:var(--shadow-cream)}
+.foot--slim .foot__base{margin-top:0;padding-block:34px}
+.foot__base{display:flex;align-items:center;gap:21px;margin-top:71.5px}
+.foot__logo img{width:200px;height:20px}
+.foot__social{display:flex;gap:10px}
+.foot__social a{
+  display:grid;place-items:center;width:30px;height:30px;border-radius:3px;
+  background:var(--acid);color:var(--red-dark);
+  border:.5px solid var(--edge);box-shadow:2px 2px 0 0 var(--shadow);
+  transition:transform .14s cubic-bezier(.2,.8,.25,1), background .14s, box-shadow .14s;
+}
+.foot__social a:hover{transform:translate(-1px,-1px);background:var(--red);color:var(--acid);box-shadow:3px 3px 0 0 var(--shadow)}
+.foot__social svg{width:100%;height:100%;fill:currentColor;display:block}
+.foot__copy{font-weight:400;font-size:15px;color:var(--black);line-height:1}
+
+/* ---------- the entrance --------------------------------------------------
+   A red plate with the wordmark punched out of it, and the hole grows until
+   it is off the screen. The plate is in the markup but only shown when the
+   inline script in <head> sets data-intro, so there is no flash either way,
+   and it is removed on a timer whatever happens. Delete the .intro div, this
+   block and the first <script> in <head> to drop it. */
+.intro{display:none}
+html[data-intro] .intro{display:block;position:fixed;inset:0;z-index:9999;pointer-events:none;--veil:1;--hole:42vmin}
+.intro__solid{position:absolute;inset:0;background:var(--red);opacity:var(--veil)}
+.intro__cover{
+  position:absolute;inset:0;background:var(--acid);
+  -webkit-mask-image:linear-gradient(#000 0 0), url('intro-mark.svg');
+          mask-image:linear-gradient(#000 0 0), url('intro-mark.svg');
+  -webkit-mask-repeat:no-repeat,no-repeat;  mask-repeat:no-repeat,no-repeat;
+  -webkit-mask-position:center,center;      mask-position:center,center;
+  -webkit-mask-size:100% 100%, var(--hole) calc(var(--hole)/10);
+          mask-size:100% 100%, var(--hole) calc(var(--hole)/10);
+  -webkit-mask-composite:xor;               mask-composite:exclude;
+}
+@media (prefers-reduced-motion:reduce){ .intro{display:none !important} }
+
+/* ---------- breakpoints --------------------------------------------------- */
+@media (max-width:1560px){
+  .band > .wrap{padding-inline:0}
+  .foot__base{margin-top:56px;padding:0 0 72px;flex-wrap:wrap;row-gap:16px}
+}
+@media (max-width:1000px){
+  .band{padding:64px 0}
+  .head{padding-bottom:56px}
+}
+@media (max-width:900px){
+  .nav{height:88px;padding-left:0;gap:0;justify-content:space-between}
+  .nav__logo img{width:168px;height:16.8px;top:-2px}
+  .foot{font-size:18px;line-height:26px}
+  .foot__copy{font-size:18px}
+}
+@media (max-width:520px){
+  body{font-size:18px;line-height:23px}
+}
+</style>
+<script>/* same curtain as every other page: decided before the first paint */
+try{var _n=performance.getEntriesByType('navigation')[0],_t=_n&&_n.type||'navigate',
+_seen=sessionStorage.getItem('dp-intro');
+if(!matchMedia('(prefers-reduced-motion: reduce)').matches&&(_t==='reload'||(_t==='navigate'&&!_seen)))
+document.documentElement.dataset.intro='1';
+sessionStorage.setItem('dp-intro','1');}catch(e){}</script>
+
+<style>
+/* ==========================================================================
+   GOBBLE GOBBLE, HIP HOORAY — the film
+   Sister of /GobbleGobbleHipHooray, the song page: same header with the mark
+   alone, same lyric, same footer. The audio player is replaced by the film,
+   and the lyric now runs on the video's clock.
+   The timings are the song's, checked line by line against a transcription of
+   the video's own audio — 0.04s apart at the worst. The 5.4s the film has over
+   the song are tail, after the last line.
+   This page's CSS and JS live inside it on purpose: one file, one request, and
+   nothing for the rest of the site to carry.
+   ========================================================================== */
+.gg{overflow:hidden;padding-top:28px;--stage-h:clamp(300px, calc(100vh - 210px), 780px);--caption-h:96px}
+.gg{--stage-h:clamp(300px, calc(100dvh - 210px), 780px)}
+.head--nav{padding-bottom:0}      /* no opening copy on this page */
+.nav--mark{justify-content:center;padding-left:0}
+
+.gg__stage{
+  position:relative;
+  display:grid;place-items:center;
+}
+
+/* The card is as wide as the film: 16:9 of whatever height is left once the
+   caption has taken its share. Without that third limit, an 1100px card in a
+   short window would push its own caption off the screen. */
+.gg__screen{
+  position:relative;
+  width:min(1100px, 100%, calc((var(--stage-h) - var(--caption-h)) * 16 / 9));
+  background:var(--paper);
+  border:.5px solid var(--red-dark);border-radius:6px;
+  box-shadow:10px 10px 0 0 rgba(0,0,0,.14);
+}
+.gg__film{
+  position:relative;
+  aspect-ratio:16/9;background:#000;
+  border-radius:5px 5px 0 0;overflow:hidden;
+  border-bottom:.5px solid var(--red-dark);
+}
+/* contain, not cover: if the sums get tight the film gets bars, never a crop */
+.gg__film video{display:block;width:100%;height:100%;object-fit:contain}
+
+/* The same play chip as the Sideshow page, only bigger: radius, border and
+   shadow keep their proportions (50/5/.5/5 becomes 88/8/.5/7). The shadow is
+   translucent because this one sits on artwork, where the house's hard shadow
+   would read as an opaque block. */
+.gg__play{
+  position:absolute;left:50%;top:50%;z-index:2;
+  display:grid;place-items:center;
+  width:88px;height:88px;padding:0;box-sizing:border-box;
+  border-radius:8px;cursor:pointer;
+  background:var(--acid);color:var(--red);
+  border:.5px solid var(--red-dark);
+  box-shadow:7px 7px 0 0 rgba(0,0,0,.16);
+  transform:translate(-50%,-50%);
+  transition:transform .2s ease, opacity .2s ease;
+}
+.gg__play:hover{transform:translate(-50%,-50%) scale(1.06)}
+.gg__play svg{width:38px;height:38px}
+.gg__play .gg__arrow{margin-left:4px}   /* the triangle is left-heavy */
+.gg__play .gg__again{display:none}
+/* while it plays, the chip gets out of the film's way */
+.gg.is-playing .gg__play{opacity:0;pointer-events:none}
+.gg.is-ended .gg__play .gg__again{display:block}
+.gg.is-ended .gg__play .gg__arrow{display:none}
+/* The film ends on the end card, and a chip in the middle landed right on the
+   "&" of the logo. Once the film is over it moves to the top corner: clear of
+   the mark, clear of the line of type, and clear of the control bar along the
+   bottom. Paused mid-film it stays in the middle — any frame is as good as any
+   other there, and the middle is where the hand looks. */
+.gg.is-ended .gg__play{left:auto;right:20px;top:20px;transform:none}
+.gg.is-ended .gg__play:hover{transform:scale(1.06)}
+
+.gg__cap{
+  display:flex;align-items:baseline;justify-content:space-between;gap:20px;
+  padding:20px 26px 22px;
+}
+.gg__eyebrow{
+  margin:0 0 7px;
+  font-family:var(--display);font-weight:700;
+  font-variation-settings:'opsz' 14,'wght' 700;
+  font-size:19px;line-height:1;text-transform:uppercase;color:var(--red);
+}
+.gg__title{
+  margin:0;
+  font-family:var(--display);font-weight:700;
+  font-variation-settings:'opsz' 72,'wght' 700;
+  font-size:38px;line-height:36px;text-transform:uppercase;color:var(--red-dark);
+}
+.gg__dur{
+  flex:0 0 auto;font:400 17px/1 var(--body);color:var(--red-dark);
+  font-variant-numeric:tabular-nums;
+}
+
+/* ---------- the lyric ----------------------------------------------------- */
+.gg__lyrics{
+  position:relative;z-index:2;
+  width:min(720px, 100%);margin:26px auto 0;
+}
+.gg__scroll{
+  position:relative;        /* so the lines' offsetTop is measured from here */
+  height:clamp(320px, 50vh, 520px);
+  overflow-y:auto;overscroll-behavior:contain;
+  scroll-behavior:smooth;
+  /* the text fades in and out instead of hitting a hard edge */
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);
+          mask-image:linear-gradient(to bottom,transparent 0,#000 14%,#000 86%,transparent 100%);
+}
+.gg__scroll::-webkit-scrollbar{width:0}
+.gg__list{list-style:none;margin:0;padding:38% 0;text-align:center}
+.gg__sec{
+  display:block;margin:30px 0 10px;
+  font-family:var(--display);font-weight:700;
+  font-variation-settings:'opsz' 14,'wght' 700;
+  font-size:17px;line-height:1;text-transform:uppercase;color:var(--red);opacity:.75;
+}
+.gg__list > li:first-child .gg__sec{margin-top:0}
+.gg__line{
+  margin:0;padding:8px 10px;
+  font:400 23px/31px var(--body);color:var(--maroon);opacity:.34;
+  cursor:pointer;background:none;border:0;width:100%;
+  transition:opacity .3s ease, transform .3s ease, color .3s ease;
+}
+.gg__line:hover{opacity:.6}
+.gg__line.is-past{opacity:.3}
+.gg__line.is-now{
+  opacity:1;color:var(--red-dark);font-weight:500;
+  transform:scale(1.05);
+}
+.gg__w{transition:opacity .2s ease, color .2s ease}
+.gg__line.is-now .gg__w{opacity:.38}
+.gg__line.is-now .gg__w.is-sung{opacity:1}
+.gg__line.is-past .gg__w{opacity:1}
+
+/* ---------- the sign-off ---------------------------------------------------
+   Everything on this page runs down the middle — the film, the lyric — and a
+   sign-off pinned to the left margin broke that plumb line. Here only: on the
+   rest of the site .foot__base still starts at the edge of the wrap. */
+.foot--mid .foot__base{justify-content:center;flex-wrap:wrap;row-gap:14px}
+
+@media (max-height:820px){
+  /* short window: the caption gives up its height and the film takes it */
+  .gg{--caption-h:78px}
+  .gg__cap{padding:15px 22px 17px}
+  .gg__title{font-size:30px;line-height:29px}
+  .gg__eyebrow{font-size:17px;margin-bottom:5px}
+  .gg__lyrics{margin-top:18px}
+}
+@media (max-width:760px){
+  .gg{--stage-h:clamp(260px, calc(100dvh - 190px), 780px);--caption-h:86px}
+  .gg__screen{width:min(100%, calc((var(--stage-h) - var(--caption-h)) * 16 / 9))}
+  .gg__play{width:64px;height:64px;border-radius:6px;box-shadow:5px 5px 0 0 rgba(0,0,0,.16)}
+  .gg__play svg{width:28px;height:28px}
+  .gg.is-ended .gg__play{right:12px;top:12px}
+  .gg__cap{padding:14px 16px 16px;gap:12px}
+  .gg__title{font-size:26px;line-height:25px}
+  .gg__line{font-size:20px;line-height:27px}
+}
+@media (max-width:420px){
+  .gg__title{font-size:23px;line-height:23px}
+  .gg__dur{display:none}   /* the film's own controls already show it */
+}
+@media (prefers-reduced-motion:reduce){
+  .gg__scroll{scroll-behavior:auto}
+  .gg__line.is-now{transform:none}
+}
+</style>
+<!-- seo:auto -->
+<link rel="canonical" href="https://film.dpshow.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Dog &amp; Pony Show">
+<meta property="og:title" content="Gobble, gobble, hip hooray! — the film">
+<meta property="og:description" content="The film, with the words lighting up as they are sung. Press play.">
+<meta property="og:url" content="https://film.dpshow.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:image" content="https://film.dpshow.com/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Gobble, gobble, hip hooray! — a robot, a bear and a monkey taking a bow.">
+<meta property="og:video" content="https://film.dpshow.com/gobble-gobble-hip-hooray.mp4">
+<meta property="og:video:type" content="video/mp4">
+<meta property="og:video:width" content="1920">
+<meta property="og:video:height" content="1080">
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebPage","name":"Gobble, gobble, hip hooray! — the film","description":"The film, with the words lighting up as they are sung. Press play.","url":"https://film.dpshow.com/","isPartOf":{"@type":"WebSite","name":"The Dog & Pony Show","url":"https://dpshow.com"}},{"@context":"https://schema.org","@type":"VideoObject","name":"Gobble, gobble, hip hooray!","description":"The Dog & Pony Show's Thanksgiving film, with the words lighting up as they are sung.","thumbnailUrl":"https://film.dpshow.com/share.jpg","contentUrl":"https://film.dpshow.com/gobble-gobble-hip-hooray.mp4","embedUrl":"https://film.dpshow.com/","uploadDate":"2026-11-23","duration":"PT1M15S"}]</script>
+</head>
+<body>
+<div class="intro" aria-hidden="true"><div class="intro__solid"></div><div class="intro__cover"></div></div>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="ic-x" viewBox="220 0.25 30 30">
+<path d="M238.93,21.26h1.41l-9.13-12.07h-1.52l9.24,12.07ZM239.82,7.75h2.55l-5.59,6.37,6.53,8.63h-5.13l-4.01-5.25-4.59,5.25h-2.55l5.92-6.81-6.25-8.19h5.25l3.62,4.79,4.25-4.79Z"/>
+  </symbol>
+  <symbol id="ic-facebook" viewBox="260 0.25 30 30">
+<path d="M272.75,9.71v2.16h-2.25v3.38h2.25v9h3.38v-9h3.11l.27-3.38h-3.37v-1.25c0-.72.52-1,1.21-1h2.16v-3.38h-2.86c-2.7,0-3.89,1.19-3.89,3.46Z"/>
+  </symbol>
+  <symbol id="ic-instagram" viewBox="300 0.25 30 30">
+<path d="M315,7.46c2.54,0,2.84,0,3.84.06,2.57.12,3.78,1.34,3.89,3.89.05,1,.05,1.3.05,3.84s0,2.84-.05,3.84c-.12,2.55-1.32,3.78-3.89,3.89-1,.05-1.3.06-3.84.06s-2.84,0-3.84-.06c-2.58-.12-3.78-1.35-3.89-3.9-.05-1-.06-1.3-.06-3.84s.01-2.84.06-3.84c.12-2.55,1.32-3.78,3.89-3.89,1-.05,1.3-.05,3.84-.05ZM315,5.75c-2.58,0-2.9.01-3.92.06-3.45.16-5.37,2.07-5.53,5.53-.05,1.01-.06,1.34-.06,3.92s.01,2.9.06,3.92c.16,3.45,2.07,5.37,5.53,5.53,1.01.05,1.34.06,3.92.06s2.9-.01,3.92-.06c3.45-.16,5.37-2.07,5.53-5.53.05-1.01.06-1.34.06-3.92s-.01-2.9-.06-3.92c-.16-3.45-2.07-5.37-5.53-5.53-1.01-.05-1.34-.06-3.92-.06ZM315,10.37c-2.69,0-4.88,2.18-4.88,4.88s2.18,4.88,4.88,4.88,4.88-2.18,4.88-4.88-2.18-4.88-4.88-4.88ZM315,18.42c-1.75,0-3.17-1.42-3.17-3.17s1.42-3.17,3.17-3.17,3.17,1.42,3.17,3.17-1.42,3.17-3.17,3.17ZM320.07,9.04c-.63,0-1.14.51-1.14,1.14s.51,1.14,1.14,1.14,1.14-.51,1.14-1.14-.51-1.14-1.14-1.14Z"/>
+  </symbol>
+  <symbol id="ic-linkedin" viewBox="340 0.25 30 30">
+<rect x="348" y="12.3" width="2.85" height="10.45"/>
+<path d="M349.42,11.1c.92,0,1.66-.75,1.66-1.68s-.74-1.68-1.66-1.68-1.66.75-1.66,1.68.74,1.68,1.66,1.68Z"/>
+<path d="M355.59,17.43c0-2.96,3.8-3.2,3.8,0v5.32h2.85v-6.42c0-4.99-5.32-4.81-6.65-2.35v-1.68h-2.85v10.45h2.85v-5.32Z"/>
+  </symbol>
+  <symbol id="ic-mail" viewBox="380 0.25 30 30">
+<path d="M394.99,6.25l-8.99,6.54v11.46h18v-11.46l-9.01-6.54ZM394.99,8.1l7.34,5.33-5.05,3.44-2.29-1.85-2.29,1.85-5.05-3.44,7.33-5.33ZM387.5,15.14l4,2.72-4,3.24v-5.96ZM387.86,22.75l7.14-5.79,7.14,5.79h-14.29ZM402.5,21.1l-4-3.24,4-2.72v5.96Z"/>
+  </symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<section class="head head--nav" id="main">
+  <header class="nav wrap nav--mark">
+    <a class="nav__logo" href="https://dpshow.com/" aria-label="The Dog &amp; Pony Show — home">
+      <img class="nav__logo-red" src="dp-logo.svg" alt="Dog &amp; Pony" width="200" height="20">
+      </a>
+  </header>
+</section>
+
+<section class="band band--paper gg" data-gg>
+  <div class="wrap">
+
+    <div class="gg__stage">
+      <div class="gg__screen">
+        <div class="gg__film">
+          <video data-video playsinline preload="metadata" controls
+                 poster="poster.webp"
+                 width="1920" height="1080">
+            <source src="gobble-gobble-hip-hooray.mp4" type="video/mp4">
+          </video>
+          <button class="gg__play" type="button" data-play aria-label="Play the film">
+            <svg class="gg__arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5l11 7-11 7z" fill="currentColor"/></svg>
+            <svg class="gg__again" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6V2.6l4.6 4.4L12 11.4V8a5 5 0 1 0 5 5h2.4A7.4 7.4 0 1 1 12 6z" fill="currentColor"/></svg>
+          </button>
+        </div>
+        <div class="gg__cap">
+          <div>
+            <p class="gg__eyebrow">Sing along</p>
+            <h1 class="gg__title">Gobble, gobble, <span class="alt">hip hooray!</span></h1>
+          </div>
+          <span class="gg__dur">1:15</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="gg__lyrics">
+      <div class="gg__scroll" data-scroll>
+        <ol class="gg__list" data-list></ol>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer class="foot foot--slim foot--mid">
+  <div class="wrap">
+    <div class="foot__base">
+      <a class="foot__logo" href="https://dpshow.com/" aria-label="The Dog &amp; Pony Show — home">
+        <img src="dp-logo.svg" alt="Dog &amp; Pony" width="200" height="20">
+      </a>
+      <ul class="foot__social">
+        <li><a href="https://www.linkedin.com/company/dog-pony-show" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="30" height="30"><use href="#ic-linkedin"/></svg></a></li>
+        <li><a href="https://www.instagram.com/heyitsdpshow/" target="_blank" rel="noopener" aria-label="Instagram"><svg width="30" height="30"><use href="#ic-instagram"/></svg></a></li>
+        <li><a href="https://x.com/dpshowsj" target="_blank" rel="noopener" aria-label="X"><svg width="30" height="30"><use href="#ic-x"/></svg></a></li>
+        <li><a href="https://www.facebook.com/dpshowsj1" target="_blank" rel="noopener" aria-label="Facebook"><svg width="30" height="30"><use href="#ic-facebook"/></svg></a></li>
+        <li><a href="mailto:hello@dpshow.com" aria-label="Email"><svg width="30" height="30"><use href="#ic-mail"/></svg></a></li>
+      </ul>
+      <p class="foot__copy">© 2026 The Dog &amp; Pony Show · Silicon Valley, CA</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ==========================================================================
+   The lyric, running on the film.
+   Same mechanism as the song page, without the player: the time is read in a
+   requestAnimationFrame loop rather than from the timeupdate event, which
+   fires about four times a second — far too coarse to light one word at a
+   time.
+   The timings are the song's, checked line by line against a transcription of
+   the video's own audio: 0.04s apart at the worst.
+   ========================================================================== */
+(function () {
+  const LYRICS = {"dur":75.01,"lines":[{"s":1.64,"e":4.0,"sec":"Verse 1","w":[["The",1.64,2.2],["year",2.2,2.6],["began",2.6,2.96],["with",2.96,3.18],["quite",3.18,3.48],["a",3.48,3.64],["fright,",3.64,4.0]]},{"s":4.0,"e":6.36,"sec":"","w":[["The",4.0,4.72],["robots",4.72,5.02],["worked",5.02,5.32],["all",5.32,5.52],["day",5.52,5.8],["and",5.8,6.04],["night.",6.04,6.36]]},{"s":6.36,"e":8.56,"sec":"","w":[["We",6.36,6.98],["thought",6.98,7.14],["they'd",7.14,7.34],["steal",7.34,7.58],["our",7.58,7.82],["whole",7.82,8.1],["parade,",8.1,8.56]]},{"s":8.56,"e":10.88,"sec":"","w":[["Instead,",8.56,9.1],["they",9.3,9.48],["helped",9.48,9.82],["us",9.82,10.08],["make",10.08,10.36],["the",10.36,10.56],["grade!",10.56,10.88]]},{"s":10.88,"e":13.14,"sec":"Pre-Chorus","w":[["The",10.88,11.2],["tent",11.2,11.56],["is",11.56,11.8],["up,",11.8,11.96],["the",12.22,12.34],["lights",12.34,12.7],["are",12.7,12.88],["bright,",12.88,13.14]]},{"s":13.14,"e":15.66,"sec":"","w":[["Our",13.14,13.44],["crazy",13.44,13.88],["crew",13.88,14.25],["is",14.25,14.47],["doing",14.47,14.92],["all",14.92,15.22],["right!",15.22,15.66]]},{"s":18.1,"e":20.1,"sec":"Chorus","w":[["Gobble,",18.1,18.66],["gobble,",18.84,19.12],["what",19.34,19.56],["a",19.56,19.7],["show!",19.7,20.1]]},{"s":20.1,"e":22.42,"sec":"","w":[["Round",20.1,20.68],["and",20.68,20.98],["round",20.98,21.3],["the",21.3,21.48],["big",21.48,21.7],["tops",21.7,22.06],["go!",22.06,22.42]]},{"s":22.42,"e":24.64,"sec":"","w":[["AI's",22.42,22.76],["fast,",22.76,23.09],["but",23.09,23.36],["here's",23.36,23.83],["what's",23.83,24.3],["true,",24.3,24.64]]},{"s":24.64,"e":26.94,"sec":"","w":[["The",24.64,24.88],["real",24.88,25.44],["magic",25.44,25.96],["comes",25.96,26.38],["from",26.38,26.62],["you!",26.62,26.94]]},{"s":26.94,"e":29.16,"sec":"","w":[["Gobble,",26.94,27.74],["gobble,",27.92,28.2],["hip",28.34,28.52],["hooray!",28.52,29.16]]},{"s":29.16,"e":31.44,"sec":"","w":[["We're",29.16,29.52],["thankful",29.52,29.88],["for",29.88,30.36],["you",30.36,30.66],["every",30.66,31.06],["day!",31.06,31.44]]},{"s":31.44,"e":33.8,"sec":"","w":[["New",31.44,31.72],["tricks,",31.72,32.04],["new",32.16,32.3],["tools,",32.3,32.76],["the",32.9,32.98],["same",32.98,33.28],["old",33.28,33.5],["crew,",33.5,33.8]]},{"s":33.8,"e":35.94,"sec":"","w":[["The",33.8,34.08],["next",34.08,34.3],["big",34.3,34.54],["act",34.54,34.86],["is",34.86,35.18],["coming",35.18,35.5],["through!",35.5,35.94]]},{"s":35.94,"e":38.28,"sec":"Verse 2","w":[["We've",35.94,36.68],["got",36.68,36.84],["a",36.84,36.98],["monkey,",36.98,37.34],["horse,",37.52,37.8],["and",37.8,37.94],["bear,",37.94,38.28]]},{"s":38.28,"e":40.52,"sec":"","w":[["A",38.28,38.58],["robot",38.58,39.06],["with",39.06,39.46],["electric",39.46,40.06],["hair.",40.06,40.52]]},{"s":40.52,"e":42.88,"sec":"","w":[["A",40.52,40.96],["Ringmaster",40.96,41.58],["who",41.58,41.88],["steals",41.88,42.32],["the",42.32,42.5],["scene,",42.5,42.88]]},{"s":42.88,"e":45.04,"sec":"","w":[["And",42.88,43.12],["humans",43.12,43.68],["running",43.68,44.08],["the",44.08,44.48],["machine!",44.48,45.04]]},{"s":45.04,"e":47.42,"sec":"Bridge","w":[["Thirty",45.04,45.68],["years",45.68,46.3],["and",46.3,46.54],["still",46.54,46.78],["on",46.78,47.02],["stage,",47.02,47.42]]},{"s":47.42,"e":49.68,"sec":"","w":[["We're",47.42,47.74],["turning",47.74,48.18],["to",48.18,48.62],["another",48.62,49.18],["page.",49.18,49.68]]},{"s":49.68,"e":52.02,"sec":"","w":[["Through",49.68,50.0],["every",50.0,50.5],["twist",50.5,50.9],["and",50.9,51.24],["every",51.24,51.64],["bend,",51.64,52.02]]},{"s":52.02,"e":54.4,"sec":"","w":[["We're",52.02,52.28],["glad",52.28,52.6],["to",52.6,52.88],["call",52.88,53.16],["you",53.16,53.4],["all",53.4,53.76],["our",53.76,53.96],["friends!",53.96,54.4]]},{"s":56.76,"e":58.68,"sec":"Final Chorus","w":[["Gobble,",56.76,57.4],["gobble,",57.56,57.82],["what",58.08,58.22],["a",58.22,58.4],["show!",58.4,58.68]]},{"s":58.68,"e":61.0,"sec":"","w":[["We've",58.68,59.16],["still",59.16,59.34],["got",59.34,59.64],["miles",59.64,60.06],["and",60.06,60.24],["miles",60.24,60.58],["to",60.58,60.76],["go!",60.76,61.0]]},{"s":61.0,"e":63.42,"sec":"","w":[["New",61.0,61.3],["tricks,",61.3,61.64],["new",61.78,61.9],["tools,",61.9,62.34],["the",62.56,62.6],["same",62.6,62.88],["old",62.88,63.14],["crew,",63.14,63.42]]},{"s":63.42,"e":66.34,"sec":"","w":[["And",63.42,63.77],["all",63.77,64.13],["our",64.13,64.48],["thanks",64.48,65.1],["belong",65.1,65.72],["to",65.72,65.99],["you!",65.99,66.34]]}]};
+  const stage = document.querySelector('[data-gg]');
+  const video = document.querySelector('[data-video]');
+  if (!stage || !video) return;
+
+  const playBtn = stage.querySelector('[data-play]');
+  const list = stage.querySelector('[data-list]');
+  const scroller  = stage.querySelector('[data-scroll]');
+  const eyebrow = stage.querySelector('.gg__eyebrow');
+  const EYEBROW_TEXT = eyebrow.textContent;
+
+  const lines = LYRICS.lines.map((l, i) => {
+    const li = document.createElement('li');
+    if (l.sec) {
+      const s = document.createElement('span');
+      s.className = 'gg__sec'; s.textContent = l.sec;
+      li.appendChild(s);
+    }
+    const b = document.createElement('button');
+    b.type = 'button'; b.className = 'gg__line'; b.dataset.i = i;
+    l.w.forEach(([p], n) => {
+      const w = document.createElement('span');
+      w.className = 'gg__w'; w.textContent = (n ? ' ' : '') + p;
+      b.appendChild(w);
+    });
+    li.appendChild(b);
+    list.appendChild(li);
+    return { data: l, el: b, words: [].slice.call(b.children) };
+  });
+
+  let current = -1, frame = 0, touched = 0;
+
+  function centre(el) {
+    if (Date.now() - touched < 4000) return;   /* the reader just scrolled: leave it alone */
+    scroller.scrollTo({ top: el.offsetTop - (scroller.clientHeight / 2) + (el.offsetHeight / 2),
+                    behavior: 'smooth' });
+  }
+  ['wheel', 'touchmove', 'pointerdown'].forEach(e =>
+    scroller.addEventListener(e, () => { touched = Date.now(); }, { passive: true }));
+
+  function paint() {
+    const t = video.currentTime;
+    let i = -1;
+    for (let n = 0; n < lines.length; n++) {
+      if (t >= lines[n].data.s) i = n; else break;
+    }
+    /* past its end a line stays lit until the next one starts, so
+       nothing blinks off in the breath between verses */
+    if (i !== current) {
+      if (lines[current]) {
+        lines[current].el.classList.remove('is-now');
+        lines[current].el.classList.add('is-past');
+        lines[current].el.removeAttribute('aria-current');
+      }
+      current = i;
+      if (lines[current]) {
+        lines[current].el.classList.add('is-now');
+        lines[current].el.classList.remove('is-past');
+        lines[current].el.setAttribute('aria-current', 'true');
+        centre(lines[current].el);
+      }
+    }
+    if (lines[current]) {
+      const l = lines[current];
+      l.data.w.forEach((w, n) => {
+        l.words[n].classList.toggle('is-sung', t >= w[1]);
+      });
+    }
+    /* lines ahead of a jump backwards go dark again */
+    for (let n = current + 1; n < lines.length; n++) {
+      if (lines[n].el.classList.contains('is-past')) {
+        lines[n].el.classList.remove('is-past');
+        lines[n].words.forEach(p => p.classList.remove('is-sung'));
+      }
+    }
+  }
+
+  function tick() {
+    paint();
+    if (!video.paused) frame = requestAnimationFrame(tick);
+  }
+
+  function play() { video.play().catch(() => {}); }
+  playBtn.addEventListener('click', () => {
+    if (stage.classList.contains('is-ended')) { video.currentTime = 0; touched = 0; }
+    play();
+  });
+
+  video.addEventListener('play', () => {
+    stage.classList.remove('is-ended');
+    stage.classList.add('is-playing');
+    eyebrow.textContent = EYEBROW_TEXT;
+    playBtn.setAttribute('aria-label', 'Play the film');
+    tick();
+  });
+  video.addEventListener('pause', () => {
+    stage.classList.remove('is-playing');
+    cancelAnimationFrame(frame);
+  });
+  /* at the end the chip comes back as "again", and the lyric rewinds */
+  video.addEventListener('ended', () => {
+    stage.classList.remove('is-playing');
+    stage.classList.add('is-ended');
+    eyebrow.textContent = 'Again?';
+    playBtn.setAttribute('aria-label', 'Play it again');
+    touched = 0;
+    if (lines[0]) centre(lines[0].el);
+  });
+  video.addEventListener('seeked', () => {
+    stage.classList.remove('is-ended');
+    paint();
+  });
+
+  /* clicking a line plays from there */
+  list.addEventListener('click', ev => {
+    const b = ev.target.closest('.gg__line');
+    if (!b) return;
+    touched = 0;
+    stage.classList.remove('is-ended');
+    video.currentTime = LYRICS.lines[+b.dataset.i].s;
+    if (video.paused) play(); else paint();
+  });
+
+  /* the panel opens with the first line already centred. Without this, the top
+     of it is just the room that exists so line one can be centred — a void.
+     scroll-behavior comes off and goes back on: this jump has to be dry. */
+  (function () {
+    const topo = lines[0] && lines[0].el;
+    if (!topo) return;
+    scroller.style.scrollBehavior = 'auto';
+    scroller.scrollTop = topo.offsetTop - (scroller.clientHeight / 2) + (topo.offsetHeight / 2);
+    scroller.style.scrollBehavior = '';
+  })();
+
+  paint();
+})();
+</script>
+
+<script>
+/* ------------------------------------------------------------------ entrance
+   The plate is already in the markup and shown only when the inline script in
+   <head> set data-intro, so there is no flash either way. All this does is
+   grow the hole, and remove the plate whatever happens.
+   Delete this script, the .intro div and the .intro block in the stylesheet
+   to drop the entrance entirely — nothing else depends on it.
+   ========================================================================== */
+(function () {
+  const intro = document.querySelector('.intro');
+  if (!intro || !document.documentElement.dataset.intro) return;
+
+  const OPEN_MS = 1300;
+  const HOLD_MS = 320;      // let the mark be seen before it opens
+  const WAIT_MS = 1600;     // ceiling on waiting for fonts
+
+  const short = Math.min(innerWidth, innerHeight);
+  const long  = Math.max(innerWidth, innerHeight);
+  const from  = short * 0.42;   // hole width; the mark is 10:1, so 1/10 tall
+  const to    = long * 14;      // wide enough that its tenth clears the height
+
+  // Quartic in and out: slow to start, quick to finish.
+  const ease = t => t < 0.5 ? 8 * t * t * t * t : 1 - Math.pow(-2 * t + 2, 4) / 2;
+
+  function paint(t) {
+    const e = ease(t);
+    // Growth is exponential — linear reads as braking, because the eye judges
+    // size in proportion.
+    intro.style.setProperty('--hole', from * Math.pow(to / from, e) + 'px');
+    intro.style.setProperty('--veil', 1 - Math.min(1, Math.max(0, (e - 0.3) / 0.28)));
+    intro.style.opacity = 1 - Math.min(1, Math.max(0, (e - 0.82) / 0.18));
+  }
+
+  paint(0);
+
+  let running = false;
+  function run() {
+    if (running) return;
+    running = true;
+
+    // requestAnimationFrame never fires in a background tab, which would leave
+    // the plate frozen on its first frame. Nobody is watching an entrance they
+    // cannot see, so skip straight to the page.
+    if (document.hidden) { intro.remove(); return; }
+
+    const started = performance.now();
+    (function step(now) {
+      const t = Math.min(1, (now - started) / OPEN_MS);
+      paint(t);
+      if (t < 1) requestAnimationFrame(step);
+      else intro.remove();
+    })(performance.now());
+  }
+
+  // Last resort: whatever happens, the plate is gone by this point.
+  setTimeout(() => intro.remove(), WAIT_MS + OPEN_MS + 600);
+
+  const fonts = document.fonts ? document.fonts.ready : Promise.resolve();
+  setTimeout(run, WAIT_MS);
+  setTimeout(() => fonts.then(run), HOLD_MS);
+})();
+</script>
+</body>
+</html>
